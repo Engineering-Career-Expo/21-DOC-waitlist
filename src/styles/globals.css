@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input:focus ~ label,
+input:not(:placeholder-shown) ~ label,
+textarea:focus ~ label,
+textarea:not(:placeholder-shown) ~ label,
+select:focus ~ label,
+select:not([value=""]):valid ~ label {
+  @apply text-outline;
+  @apply text-sm;
+  @apply -translate-y-5;
+}
+
+
+input:focus ~ div:before,
+input:not(:placeholder-shown) ~ div:before {
+  transform: scale(1);
+}
+
+@layer components {
+  .logo{
+    @apply relative w-20 h-10;
+  }
+  .inputDiv{
+    @apply  mb-10 relative w-full h-10;
+  }
+  .line{
+   @apply absolute w-full h-0.5 bottom-0 before:content-[''] before:absolute before:h-0.5 before:w-full before:bg-outline before:scale-x-0 before:origin-center before:transition-all before:duration-300 before:ease-linear;
+  }
+  .input{
+    @apply block w-full h-full  text-base border-b-2 border-underlineDefault outline-none focus:outline-none placeholder-transparent;
+  }
+  .label{
+    @apply absolute bottom-2.5 text-black text-base transition-all duration-300 ease-in peer-focus:text-outline peer-focus:-translate-y-5 peer-placeholder-shown:valid:text-base peer-placeholder-shown:-translate-y-5 peer-placeholder-shown:valid:text-outline peer-focus:text-sm;
+  }
+  .icons{
+    @apply text-[8rem] text-center mx-auto;
+  }
+}
